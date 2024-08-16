@@ -28,7 +28,7 @@ export default function BarrageAdd() {
 
   return (
     <div className="w-full h-full  border-0 flex flex-col bg-white p-8 ">
-      <div className=" w-full h-[200px] grid flex-row place-content-center border">
+      <div className=" w-full h-[200px] grid flex-row place-content-center border-0">
         <Image
           src={"/tea.jpg"}
           className="w-[400px]"

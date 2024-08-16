@@ -4,11 +4,11 @@ import Button_GenerateWalletCard from './Button_GenerateWalletCard'
 
 export default function CompletedPP({ ppUsers }: any) {
   return (
-    <div className="w-[1600px] h-full bg-gray-100 grid grid-cols-3 gap-8 p-4 ">
+    <div className="w-[1600px] h-full grid grid-cols-3 gap-8 p-4 ">
       {ppUsers &&
         ppUsers.map((pp: any, key: number) => {
           return (
-            <div className="w-[500px] h-[200px] flex flex-row  p-6 font-light bg-white shadow-xl rounded-2xl text-gray-700  ">
+            <div className="w-[500px] h-[200px] flex flex-row  p-6 font-light bg-white hover:shadow-xl rounded-2xl text-gray-700  ">
               <div className="w-[350px] border-0">
                 <div className="w-full flex flex-row">
                   <span className="w-[100px]  block text-slate-400">
