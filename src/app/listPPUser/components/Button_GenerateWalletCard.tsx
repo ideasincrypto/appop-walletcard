@@ -6,9 +6,7 @@ import { jsPDF } from "jspdf";
 export default function Button_GenerateWalletCard({ pp }: any) {
   async function GeneratePDF(pp: any) {
     //alert((rcdPermitId))
-    const permitID: string = pp.permit
-      ? pp.permit.rcdPermitId.toString()
-      : "N/A";
+    const permitID: string = pp.appNumber;
 
     const applicantName = pp.applicantName;
 

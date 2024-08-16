@@ -2,11 +2,11 @@ import React from "react";
 
 import Button_GenerateWalletCard from './Button_GenerateWalletCard'
 
-export default function CompletedPP({ data }: any) {
+export default function CompletedPP({ ppUsers }: any) {
   return (
     <div className="w-full h-full bg-gray-100 grid grid-cols-3 gap-8 p-4 ">
-      {data &&
-        data.map((pp: any, key: number) => {
+      {ppUsers &&
+        ppUsers.map((pp: any, key: number) => {
           return (
             <div className="w-[500px] h-[200px] flex flex-row  p-6 font-light bg-white shadow-xl rounded-2xl text-gray-700  ">
               <div className="w-[350px] border-0">

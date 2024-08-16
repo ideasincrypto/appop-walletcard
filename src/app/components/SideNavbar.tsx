@@ -1,4 +1,6 @@
+import Link from "next/link";
 import React from "react";
+
 
 export default function SideNavbar() {
   return (
@@ -10,24 +12,14 @@ export default function SideNavbar() {
         <div className="hidden md:block">
           <ul className="flex items-center space-x-8">
             <li>
-              <a href="#" className="text-white">
-                Home
-              </a>
+              <Link href="listPPUser/" className="text-white">
+                Completed PP Wallet Card
+              </Link>
             </li>
             <li>
-              <a href="#" className="text-white">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-white">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-white">
-                Contact
-              </a>
+              <Link href="editPPUser" className="text-white">
+                Edit PP User
+              </Link>
             </li>
           </ul>
         </div>
@@ -51,22 +43,34 @@ export default function SideNavbar() {
       <div className="mobile-menu hidden md:hidden">
         <ul className="mt-4 space-y-4">
           <li>
-            <a href="#" className="block px-4 py-2 text-white bg-gray-900 rounded">
+            <a
+              href="#"
+              className="block px-4 py-2 text-white bg-gray-900 rounded"
+            >
               Home
             </a>
           </li>
           <li>
-            <a href="#" className="block px-4 py-2 text-white bg-gray-900 rounded">
+            <a
+              href="#"
+              className="block px-4 py-2 text-white bg-gray-900 rounded"
+            >
               About
             </a>
           </li>
           <li>
-            <a href="#" className="block px-4 py-2 text-white bg-gray-900 rounded">
+            <a
+              href="#"
+              className="block px-4 py-2 text-white bg-gray-900 rounded"
+            >
               Services
             </a>
           </li>
           <li>
-            <a href="#" className="block px-4 py-2 text-white bg-gray-900 rounded">
+            <a
+              href="#"
+              className="block px-4 py-2 text-white bg-gray-900 rounded"
+            >
               Contact
             </a>
           </li>
