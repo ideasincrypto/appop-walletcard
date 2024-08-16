@@ -166,6 +166,7 @@ model TB_2017Gala_Karaoka {
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model TB_Auction_Item {
   ItemID         Int
   ItemCode       String   @db.VarChar(8)
@@ -183,6 +184,7 @@ model TB_Auction_Item {
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model TB_Auction_Item_Bid {
   ItemBidID                Int
   ItemBidName              String   @db.VarChar(20)
@@ -335,6 +337,7 @@ model events {
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model feature {
   Parking         String? @db.VarChar(5000)
   Sidewalk        String? @db.VarChar(5000)
