@@ -10,7 +10,11 @@ const prisma = new PrismaClient();
 export default async function Home() {
   revalidatePath("/listPPUser");
 
-  const ppUsers = await prisma.copy_of_wallet_card_20240815.findMany();
+  const ppUsers = await prisma.copy_of_wallet_card_20240815.findMany({
+    orderBy: {
+      ID: "desc",
+    },
+  });
   return (
     <div className="w-screen h-screen bg-green-50 flex flex-col items-center">
       <div className="w-full">
