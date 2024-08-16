@@ -13,7 +13,7 @@ export default async function Home() {
       <div className="w-full">
         <SideNavbar />
       </div>
-      <div className="w-full grid place-items-center ">
+      <div className="w-full grid place-items-center overflow-y-auto  ">
         <CompletedPP ppUsers={ppUsers} />
       </div>
     </div>
