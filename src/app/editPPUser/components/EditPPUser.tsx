@@ -16,7 +16,7 @@ export default function EditPPUser({ ppUsers }: any) {
               return (
                 <div
                   key={key}
-                  className="w-full h-[60px]  flex flex-row hover:bg-lime-50 text-lg font-light"
+                  className="w-full h-[60px]  flex flex-row hover:bg-lime-50 text-lg font-light group"
                 >
                   <span className=" text-gray-200 border-0 w-[100px]   flex items-center  justify-center">
                     {user.ID}
@@ -36,9 +36,11 @@ export default function EditPPUser({ ppUsers }: any) {
                   <span className=" text-gray-500 border-0 w-[200px]  flex items-center">
                     {user.appExpiryDate}
                   </span>
-                  <Button_Save user={user} savePP={savePP} />
-                  <Button_Delete user={user} deletePP={deletePP} />
-                  <Button_Print user={user} />
+                  <div className="flex flex-row  ">
+                    <Button_Save user={user} savePP={savePP} />
+                    <Button_Delete user={user} deletePP={deletePP} />
+                    <Button_Print user={user} />
+                  </div>
                 </div>
               );
             })}
