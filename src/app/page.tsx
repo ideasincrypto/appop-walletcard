@@ -13,7 +13,7 @@ export default async function Home() {
           className="w-full h-[60px] rounded-full grid place-items-center font-light text-lg text-gray-500 bg-white hover:bg-green-100 hover:text-green-500"
           href={"listPPUser/"}
         >
-           Completed PP Wallet Card
+          Completed PP Wallet Card
         </Link>
         <Link
           className="w-[500px] h-[60px] rounded-full grid place-items-center font-light text-lg text-gray-500 bg-white hover:bg-green-100 hover:text-green-500"
