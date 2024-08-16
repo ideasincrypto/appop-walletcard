@@ -2,9 +2,10 @@
 import React from "react";
 import { CiEdit } from "react-icons/ci";
 import { CiTrash } from "react-icons/ci";
-import { revalidatePath } from "next/cache";
+
 
 export default function Button_Save_Delete({ user, deletePP }: any) {
+
   function handel_Del(e: any) {
     const id = user.ID;
     const userID = user.userID;
@@ -25,7 +26,7 @@ export default function Button_Save_Delete({ user, deletePP }: any) {
       return null;
     }
 
-    revalidatePath("/editPPUser");
+    
   }
 
   return (

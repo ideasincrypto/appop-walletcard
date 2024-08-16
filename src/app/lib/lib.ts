@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
@@ -12,6 +13,6 @@ export async function deletePP(_id: string) {
     },
   });
 
-  //redirect("/barrageList");
+  revalidatePath("/editPPUser");
 }
 //=============================================
