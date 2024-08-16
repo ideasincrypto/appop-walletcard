@@ -3,26 +3,30 @@ import { redirect } from "next/navigation";
 import moment from "moment";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
+import { PrismaClient } from "@prisma/client";
 
-export default function BarrageAdd() {
-  async function addBarrage(data: FormData) {
+const prisma = new PrismaClient();
+
+export default function AddPPUser() {
+  async function addPP(data: FormData) {
     "use server";
 
-    // const donor_Fname = data.get("donor_Fname")?.valueOf().toString();
-    // const donor_Lname = data.get("donor_Lname")?.valueOf().toString();
-    // const donor_Org = data.get("donor_Org")?.valueOf().toString();
-    // const donor_Amount = data.get("donor_Amount")?.valueOf().toString();
+    const userID = data.get("userID")?.valueOf();
+    const applicantName = data.get("applicantName")?.valueOf().toString();
+    const applicantDoB = data.get("applicantDoB")?.valueOf().toString();
+    const appNumber = data.get("appNumber")?.valueOf().toString();
+    const appExpiryDate = data.get("appExpiryDate")?.valueOf().toString();
 
-    // await prismaMysql.tbl_BMORun2024_Barrage.create({
-    //   data: {
-    //     donor_Fname: donor_Fname,
-    //     donor_Lname: donor_Lname,
-    //     donor_Org: donor_Org || undefined,
-    //     donor_Amount: Number(donor_Amount) || undefined,
-    //     createdAt: createdAt,
-    //   },
-    // });
-    // revalidatePath("/barrageList");
+    await prisma.copy_of_wallet_card_20240815.create({
+      data: {
+        userID: Number(userID),
+        applicantName: applicantName,
+        applicantDoB: applicantDoB || undefined,
+        appNumber: appNumber || undefined,
+        appExpiryDate: appExpiryDate,
+      },
+    });
+    revalidatePath("/editPPUser");
     //redirect("/barrageList");
   }
 
@@ -38,7 +42,7 @@ export default function BarrageAdd() {
         ></Image>
       </div>
       <div className="w-full bg-white p-16">
-        <form action={addBarrage}>
+        <form action={addPP}>
           <div className="flex flex-col space-y-8 border-0">
             {/* <label
                   htmlFor="first_name"
