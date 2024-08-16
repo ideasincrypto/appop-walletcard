@@ -3,8 +3,8 @@ import Button_Save_Delete from "./Button_Save_Delete";
 
 export default function EditPPUser({ ppUsers }: any) {
   return (
-    <div className="w-full h-full bg-gray-300 grid place-items-center p-8">
-      <div className="w-[1200px] h-full bg-white p-4 ">
+    <div className="w-full h-full  grid place-items-center">
+      <div className="w-full h-full bg-white p-4 ">
         <div className="w-full flex flex-row hover:bg-yellow-100">
           <span className=" text-gray-500 border-0 w-[50px] h-[50px]  flex items-center">
             ID

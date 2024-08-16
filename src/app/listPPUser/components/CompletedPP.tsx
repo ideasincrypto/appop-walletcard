@@ -4,7 +4,7 @@ import Button_GenerateWalletCard from './Button_GenerateWalletCard'
 
 export default function CompletedPP({ ppUsers }: any) {
   return (
-    <div className="w-full h-full bg-gray-100 grid grid-cols-3 gap-8 p-4 ">
+    <div className="w-[1600px] h-full bg-gray-100 grid grid-cols-3 gap-8 p-4 ">
       {ppUsers &&
         ppUsers.map((pp: any, key: number) => {
           return (
