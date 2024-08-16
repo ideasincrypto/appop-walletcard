@@ -1,17 +1,12 @@
 "use client";
 import React from "react";
 import { CiEdit } from "react-icons/ci";
-import { CiTrash } from "react-icons/ci";
+
 
 export default function Button_Save_Delete({ user, savePP }: any) {
   const [showModal, setShowModal] = React.useState(false);
 
   async function handel_Save(data: FormData) {
-    const userID = data.get("userID")?.valueOf();
-
-    // if (typeof userID != "number") {
-    //   return false;
-    // }
     await savePP(data);
     setShowModal(false);
     //alert(data);
@@ -138,7 +133,3 @@ export default function Button_Save_Delete({ user, savePP }: any) {
     </>
   );
 }
-
-const Modal_Add = () => {
-  return <></>;
-};

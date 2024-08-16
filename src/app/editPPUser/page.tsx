@@ -17,12 +17,14 @@ export default async function Home() {
       <div className="w-full flex">
         <SideNavbar />
       </div>
-      <div className="w-full  flex flex-1 flex-row border-0 justify-center  overflow-y-auto">
-        <div className="w-[1300px]  grid place-items-center bg-white">
-          <EditPPUser ppUsers={ppUsers} />
-        </div>
+
+      <div className="w-full  flex flex-1 flex-grow flex-row border-0 justify-center  overflow-y-auto">
         <div className="border-0">
           <AddPPUser />
+        </div>
+
+        <div className="w-[1300px]  grid place-items-center bg-white">
+          <EditPPUser ppUsers={ppUsers} />
         </div>
       </div>
     </div>
