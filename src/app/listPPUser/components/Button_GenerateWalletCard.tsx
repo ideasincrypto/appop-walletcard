@@ -30,10 +30,10 @@ export default function Button_GenerateWalletCard({ pp }: any) {
     doc.text(permitID, 20, 15);
 
     doc.setFont("helvetica", "normal");
-    doc.text("Expiry: ", 40, 15);
+    doc.text("Expiry: ", 43, 15);
 
     doc.setFont("helvetica", "bold");
-    doc.text(expiryDate, 55, 15);
+    doc.text(expiryDate, 58, 15);
 
     doc.setFont("helvetica", "normal");
     doc.text("Name: ", 0, 22);
@@ -48,10 +48,10 @@ export default function Button_GenerateWalletCard({ pp }: any) {
     doc.text(Mob, 15, 30);
 
     doc.setFont("helvetica", "normal");
-    doc.text("User # ", 40, 30);
+    doc.text("User # ", 43, 30);
 
     doc.setFont("helvetica", "bold");
-    doc.text(userID, 55, 30);
+    doc.text(userID, 58, 30);
 
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
