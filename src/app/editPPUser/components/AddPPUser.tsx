@@ -1,6 +1,4 @@
 import React from "react";
-import { redirect } from "next/navigation";
-import moment from "moment";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import { PrismaClient } from "@prisma/client";
@@ -10,7 +8,6 @@ const prisma = new PrismaClient();
 export default function AddPPUser() {
   async function addPP(data: FormData) {
     "use server";
-
     const userID = data.get("userID")?.valueOf();
     const applicantName = data.get("applicantName")?.valueOf().toString();
     const applicantDoB = data.get("applicantDoB")?.valueOf().toString();
@@ -31,7 +28,7 @@ export default function AddPPUser() {
   }
 
   return (
-    <div className="w-full h-full  border-0 flex flex-col bg-white p-8 ">
+    <div className="w-full h-full  border-0 flex flex-col bg-white p-2 ">
       <div className=" w-full h-[200px] grid flex-row place-content-center border-0">
         <Image
           src={"/tea.jpg"}
@@ -41,15 +38,9 @@ export default function AddPPUser() {
           alt={"tea"}
         ></Image>
       </div>
-      <div className="w-full bg-white p-16">
+      <div className="w-full bg-white p-12">
         <form action={addPP}>
           <div className="flex flex-col space-y-8 border-0">
-            {/* <label
-                  htmlFor="first_name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  First name
-                </label> */}
             <input
               type="text"
               id="userID"
@@ -58,12 +49,7 @@ export default function AddPPUser() {
               placeholder="User ID"
               required
             />
-            {/* <label
-                  htmlFor="last_name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Last name
-                </label> */}
+
             <input
               type="text"
               id="applicantName"
@@ -72,12 +58,7 @@ export default function AddPPUser() {
               placeholder="Applicant Name"
               required
             />
-            {/* <label
-                  htmlFor="company"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Company
-                </label> */}
+
             <input
               type="text"
               id="applicantDoB"
@@ -106,7 +87,7 @@ export default function AddPPUser() {
 
             <button
               type="submit"
-              className="bg-blue-100 border border-blue-300 text-blue-600 h hover:text-white hover:bg-blue-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
+              className="bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
             >
               Submit
             </button>

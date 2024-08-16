@@ -2,7 +2,8 @@ import React from "react";
 import Button_Delete from "./Button_Delete";
 import Button_Save from "./Button_Save";
 
-import { deletePP } from "@/app/lib/lib";
+import { deletePP, savePP } from "@/app/lib/lib";
+
 
 export default function EditPPUser({ ppUsers }: any) {
   return (
@@ -34,7 +35,7 @@ export default function EditPPUser({ ppUsers }: any) {
                 <span className=" text-gray-500 border-0 w-[200px]  flex items-center">
                   {user.appExpiryDate}
                 </span>
-                <Button_Save />
+                <Button_Save user={user}  savePP={savePP}/>
                 <Button_Delete user={user} deletePP={deletePP} />
               </div>
             );
