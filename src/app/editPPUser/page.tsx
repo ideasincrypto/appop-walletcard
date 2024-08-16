@@ -14,11 +14,11 @@ export default async function Home() {
   });
   return (
     <div className="w-screen h-screen bg-green-50 flex flex-col items-center">
-      <div className="w-full">
+      <div className="w-full flex">
         <SideNavbar />
       </div>
-      <div className="w-full h-full flex flex-row border-0 justify-center p-4 ">
-        <div className="w-[1300px] grid place-items-center bg-white p-4">
+      <div className="w-full  flex flex-1 flex-row border-0 justify-center  overflow-y-auto">
+        <div className="w-[1300px]  grid place-items-center bg-white">
           <EditPPUser ppUsers={ppUsers} />
         </div>
         <div>
