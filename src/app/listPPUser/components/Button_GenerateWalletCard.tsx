@@ -36,10 +36,10 @@ export default function Button_GenerateWalletCard({ pp }: any) {
     doc.text(expiryDate, 55, 15);
 
     doc.setFont("helvetica", "normal");
-    doc.text("Name: ", 0, 23);
+    doc.text("Name: ", 0, 22);
 
     doc.setFont("helvetica", "bold");
-    doc.text(applicantName, 15, 23);
+    doc.text(applicantName, 15, 22);
 
     doc.setFont("helvetica", "normal");
     doc.text("MoB: ", 0, 30);
