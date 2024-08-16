@@ -5,31 +5,12 @@ export default function EditPPUser({ ppUsers }: any) {
   return (
     <div className="w-full h-full  grid place-items-center">
       <div className="w-full h-full bg-white p-4 ">
-        <div className="w-full flex flex-row hover:bg-yellow-100">
-          <span className=" text-gray-500 border-0 w-[50px] h-[50px]  flex items-center">
-            ID
-          </span>
-          <span className=" text-gray-500 border-0 w-[100px] h-[50[px] flex items-center">
-            userID
-          </span>
-          <span className=" text-gray-500 border-0 w-[400px] h-[50[px] flex items-center">
-            Name
-          </span>
-          <span className=" text-gray-500 border-0 w-[200px] h-[50[px] flex items-center">
-            DoB
-          </span>
-          <span className=" text-gray-500 border-0 w-[100px] h-[50[px] flex items-center">
-            PP #
-          </span>
-          <span className=" text-gray-500 border-0 w-[200px] h-[50[px] flex items-center">
-            Expiry Date
-          </span>
-        </div>
+        <TitleBar />
         {ppUsers &&
           ppUsers.map((user: any, key: number) => {
             return (
-              <div className="w-full flex flex-row hover:bg-yellow-100">
-                <span className=" text-gray-500 border-0 w-[50px] h-[50px]  flex items-center">
+              <div className="w-full flex flex-row hover:bg-lime-50">
+                <span className=" text-gray-200 border-0 w-[100px] h-[50px]  flex items-center  justify-center">
                   {user.ID}
                 </span>
                 <span className=" text-gray-500 border-0 w-[100px] h-[50[px] flex items-center">
@@ -56,3 +37,28 @@ export default function EditPPUser({ ppUsers }: any) {
     </div>
   );
 }
+
+const TitleBar = () => {
+  return (
+    <div className="w-full flex flex-row bg-yellow-100">
+      <span className=" text-gray-500 border-0 w-[100px] h-[50px]  flex items-center justify-center">
+        ID
+      </span>
+      <span className=" text-gray-500 border-0 w-[100px] h-[50[px] flex items-center">
+        userID
+      </span>
+      <span className=" text-gray-500 border-0 w-[400px] h-[50[px] flex items-center">
+        Name
+      </span>
+      <span className=" text-gray-500 border-0 w-[200px] h-[50[px] flex items-center">
+        DoB
+      </span>
+      <span className=" text-gray-500 border-0 w-[100px] h-[50[px] flex items-center">
+        PP #
+      </span>
+      <span className=" text-gray-500 border-0 w-[200px] h-[50[px] flex items-center">
+        Expiry Date
+      </span>
+    </div>
+  );
+};
