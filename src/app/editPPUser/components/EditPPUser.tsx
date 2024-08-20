@@ -1,15 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Button_Delete from "./Button_Delete";
 import Button_Save from "./Button_Save";
 import Button_Print from "./Button_Print";
 
 import { deletePP, savePP } from "@/app/lib/lib";
 
-export default function EditPPUser({ ppUsers }: any) {
+export default async function EditPPUser({ ppUsers }: any) {
+  //await new Promise((resolve) => setTimeout(resolve, 2000));
+
   return (
     <div className="w-full h-full  grid place-items-center">
       <div className="w-full h-full bg-white p-4  flex flex-col ">
         <TitleBar />
+
         <div className="  flex flex-col h-[800px] w-full overflow-y-auto">
           {ppUsers &&
             ppUsers.map((user: any, key: number) => {

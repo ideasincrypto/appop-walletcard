@@ -1,4 +1,6 @@
 import { PrismaClient } from "@prisma/client";
+import React, { Suspense } from "react";
+import Image from "next/image";
 
 import SideNavbar from "../components/SideNavbar";
 import EditPPUser from "./components/EditPPUser";
@@ -23,8 +25,23 @@ export default async function Home() {
           <AddPPUser />
         </div>
 
-        <div className="w-[1300px]  grid place-items-center bg-white">
-          <EditPPUser ppUsers={ppUsers} />
+        <div className="w-[1300px]  grid place-items-center bg-white text-slate-500">
+          <Suspense
+            fallback={
+              <div className="fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60  backdrop-blur-sm transition-opacity duration-300">
+                <div className="border-0 border-white   ">
+                  <Image
+                    src="/cargando.gif"
+                    width={100}
+                    height={100}
+                    alt="Picture of the author"
+                  />
+                </div>
+              </div>
+            }
+          >
+            <EditPPUser ppUsers={ppUsers} />
+          </Suspense>
         </div>
       </div>
     </div>
