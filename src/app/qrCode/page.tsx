@@ -17,6 +17,7 @@ import React from "react";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import Document from "next/document";
 import moment from "moment-timezone";
+import QRCodeGenerator from "./components/QRCodeGenerator";
 
 async function fillForm() {
   const formUrl = "/QR_Template.pdf";
@@ -93,8 +94,11 @@ export default function page() {
         >
           click pdf
         </button>
+        <QRCodeGenerator />
       </div>
-      <div className="w-[500px] block ">{JSON.stringify(data)}</div>
+      <div className="w-[500px] block  text-blue-400">
+        {/* {JSON.stringify(data)} */}
+      </div>
       <br />
       {data && data.length}
       <br />

@@ -1,27 +1,27 @@
-'use client'
-import React from 'react';
-import { useQRCode } from 'next-qrcode';
+"use client";
+import React from "react";
+import { useQRCode } from "next-qrcode";
 
-function App() {
+function QRCodeGenerator() {
   const { Image } = useQRCode();
 
   return (
     <Image
-      text={'303 tom tang volunteer'}
+      text={"303 tom tang volunteer"}
       options={{
-        type: 'image/jpeg',
+        type: "image/jpeg",
         quality: 0.3,
-        errorCorrectionLevel: 'M',
+        errorCorrectionLevel: "M",
         margin: 3,
         scale: 4,
         width: 200,
         color: {
-          dark: '#010599FF',
-          light: '#FFBF60FF',
+          dark: "#010599FF",
+          light: "#FFBF60FF",
         },
       }}
     />
   );
 }
 
-export default App;
+export default QRCodeGenerator;
