@@ -1,24 +1,36 @@
 import Link from "next/link";
 import React from "react";
 
-
 export default function SideNavbar() {
   return (
     <nav className="w-full mx-auto px-6 py-3 bg-green-800">
       <div className="flex items-center justify-between">
         <div className="text-white font-bold text-xl">
-          <Link href="/" className="hover:text-blue-600">HOME</Link>
+          <Link href="/" className="hover:text-blue-600">
+            HOME
+          </Link>
         </div>
         <div className="hidden md:block">
           <ul className="flex items-center space-x-8">
             <li>
-              <Link href="listPPUser/" className="text-white hover:text-yellow-300">
+              <Link
+                href="listPPUser/"
+                className="text-white hover:text-yellow-300"
+              >
                 Completed PP Wallet Card
               </Link>
             </li>
             <li>
-              <Link href="editPPUser" className="text-white hover:text-yellow-300">
+              <Link
+                href="editPPUser/"
+                className="text-white hover:text-yellow-300"
+              >
                 Edit PP User
+              </Link>
+            </li>
+            <li>
+              <Link href="qrCode/" className="text-white hover:text-yellow-300">
+                QR Code
               </Link>
             </li>
           </ul>
