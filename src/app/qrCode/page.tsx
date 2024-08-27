@@ -15,9 +15,23 @@
 "use client";
 import React from "react";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import Script from "next/script";
 import Document from "next/document";
 import moment from "moment-timezone";
+
+import { lazy, Suspense, useState } from "react";
+
+const DynamicComponent = lazy(() => import("./components/QRCodeGenerator"));
+
 import QRCodeGenerator from "./components/QRCodeGenerator";
+
+const loadDynamicComponent = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DynamicComponent />
+    </Suspense>
+  );
+};
 
 async function fillForm() {
   const formUrl = "/QR_Template.pdf";
@@ -50,6 +64,8 @@ async function fillForm() {
 }
 
 export default function page() {
+  const [dynComp, setDynComp] = useState<any>();
+
   const [data, setData] = React.useState<any>(null);
 
   async function GeneratePDF(user: any) {
@@ -88,6 +104,11 @@ export default function page() {
     <div className="w-screen h-screen bg-white text-slate-500">
       --
       <div>
+        <button onClick={() => setDynComp(<div>{loadDynamicComponent()}</div>)}>
+          Initialize!
+        </button>
+        {dynComp}
+
         <button
           className="border-2 border-white"
           onClick={(e) => GeneratePDF(e)}
@@ -106,6 +127,17 @@ export default function page() {
       <br />
       {data && data[data.length - 1]}
       <br />
+      <Script
+        type="text/javascript"
+        async
+        src={`/static/jquery.min.js?cacheControl=${new Date().getTime()}`}
+        strategy="beforeInteractive"
+      ></Script>
+      <Script
+        type="text/javascript"
+        src="/static/JS.js"
+        strategy="beforeInteractive"
+      ></Script>
     </div>
   );
 }
