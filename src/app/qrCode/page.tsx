@@ -13,7 +13,7 @@
 // ///////////////////////
 /////////////////////
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import Script from "next/script";
 import Document from "next/document";
@@ -66,11 +66,11 @@ async function fillForm() {
 }
 
 export default function page() {
-  const [dynComp, setDynComp] = useState<any>();
+  const [dynComp, setDynComp] = useState<any>(null);
   const [data, setData] = React.useState<any>(null);
 
   async function GeneratePDF(user: any) {
-    async function getPDFBytes() {
+    async function downloadPDF() {
       //   return pdfBytes;
       // }
       setData(await fillForm());
@@ -85,7 +85,7 @@ export default function page() {
       link.download = await fileName;
       await link.click();
     }
-    getPDFBytes();
+    downloadPDF();
   }
 
   async function previewQRCard(data: FormData) {
@@ -102,7 +102,23 @@ export default function page() {
     setDynComp(<div>{loadDynamicComponent(qrInfo)}</div>);
   }
 
-  //setData(await pdfBytes);
+  const [elementContent, setElementContent] = useState<any>();
+
+  function handle_click() {
+    const elements: any = document.getElementsByClassName("qrImage");
+
+    alert(elements);
+
+    // if (elements) {
+    //   //setElementContent(element.length);
+    //   elements.forEach((e:any) => {
+    //     console.log(e);
+    //   });
+    //   alert(elements.length);
+    // }
+  }
+
+  //  const elements = document.querySelectorAll("nav1");
 
   return (
     <div className="w-screen h-screen bg-green-50 flex flex-col items-center text-gray-600">
@@ -111,6 +127,9 @@ export default function page() {
       </div>
 
       <div className="w-full h-full flex flex-row bg-slate-100 p-4 space-x-14 border-8">
+        <div className="nav1" defaultValue="valueNav1">
+          nav1{elementContent}
+        </div>
         <div className=" w-[400px] flex flex-col bg-white rounded-2xl p-8 gap-4 border-0">
           {/* <Image 
             src={"/coffee.png"}
@@ -158,23 +177,26 @@ export default function page() {
                 type="submit"
                 className="bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
               >
-                Submit
+                Preview
               </button>
             </div>
           </form>
 
           <button
-            className="h-[40px] bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
-            // onClick={() => previewQRCard()}
+            id="clickID"
+            className=" bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
+            onClick={() => handle_click()}
           >
-            Initialize!
+            Preview
           </button>
 
           <button
-            className="h-[40px] bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
+            disabled={!dynComp}
+            className=" bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center 
+             disabled:bg-slate-200 disabled:text-slate-400 disabled:hover:text-slate-400 disabled:border-slate-300"
             onClick={(e) => GeneratePDF(e)}
           >
-            convert pdf
+            Convert PDF
           </button>
           {/* <QRCodeGenerator /> */}
 
@@ -214,7 +236,9 @@ export default function page() {
 
 const QRCodeCardList = ({ qrInfo }: any) => {
   const serialNoFrom = parseInt(qrInfo.serialNoFrom);
-  const serialNoEnd = parseInt(qrInfo.serialNoEnd) + 1;
+  const serialNoEnd =
+    parseInt(qrInfo.serialNoEnd) +
+    Math.sign(parseInt(qrInfo.serialNoEnd) - serialNoFrom) * 1;
 
   const data_QRCodeInfo = _.range(serialNoFrom, serialNoEnd);
 

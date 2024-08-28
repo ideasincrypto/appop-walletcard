@@ -2,33 +2,19 @@ $("#someText").click(function () {
   alert("The paragraph was clicked.");
 });
 
-//let icon1 = document.getElementById("icon1");
-//let menu1 = document.getElementById("menu1");
-
 //****************************************** */
 
-$(".qrImage").click(function () {
-  alert($(this).children("img").prop("src").substring(0, 40));
-  // let rotateBox = 180;
+// $("#clickID").click(function () {
+//   //alert($(".qrImage").children("img").prop("src").substring(100, 40));
+//   alert($(".qrImage").length);
 
-  // var iconArrow = $(this).find($(".iconArrow"));
-  // iconArrow.css({
-  //   transform: "rotate(" + rotateBox + "deg)",
-  //   transition: `.6s`,
-  // });
+//   const categories = document.querySelectorAll(".qrImage");
 
-  // var subMenu = $(this).next($(".subMenu"));
+//   categories.forEach((e) => {
+//     console.log($(e).children("img").prop("currentSrc"));
+//   });
 
-  // if (subMenu.is(":visible")) {
-  //   subMenu.hide("slow");
-  // }
-
-  // if (subMenu.is(":hidden")) {
-  //   subMenu.show("slow");
-  // }
-
-  //alert(subMenu.is(":visible"));
-});
+// });
 
 //****************************************** */
 
