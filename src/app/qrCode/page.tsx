@@ -25,12 +25,12 @@ import _ from "lodash";
 import { lazy, Suspense, useState } from "react";
 import QRCodeGenerator from "./components/QRCodeGenerator";
 
-const DynamicComponent = lazy(() => import("./components/QRCodeGenerator"));
+// const DynamicComponent = lazy(() => import("./components/QRCodeGenerator"));
 
-const loadDynamicComponent = () => {
+const loadDynamicComponent = (qrInfo: any) => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <DynamicComponent />
+      <QRCodeCardList qrInfo={qrInfo} />
     </Suspense>
   );
 };
@@ -88,8 +88,18 @@ export default function page() {
     getPDFBytes();
   }
 
-  async function previewQRCard() {
-    setDynComp(<div>{loadDynamicComponent()}</div>);
+  async function previewQRCard(data: FormData) {
+    const qrCardTitle = data.get("qrCardTitle");
+    const serialNoFrom = data.get("serialNoFrom");
+    const serialNoEnd = data.get("serialNoEnd");
+
+    const qrInfo = {
+      qrCardTitle: qrCardTitle,
+      serialNoFrom: serialNoFrom,
+      serialNoEnd: serialNoEnd,
+    };
+
+    setDynComp(<div>{loadDynamicComponent(qrInfo)}</div>);
   }
 
   //setData(await pdfBytes);
@@ -110,7 +120,7 @@ export default function page() {
             alt={"tea"}
           ></Image> */}
 
-          <form action={""}>
+          <form action={previewQRCard}>
             <div className="flex flex-col space-y-8 border-0">
               <input
                 type="text"
@@ -135,10 +145,10 @@ export default function page() {
 
               <input
                 type="number"
-                id="serialNoTo"
-                name="serialNoTo"
+                id="serialNoEnd"
+                name="serialNoEnd"
                 className="bg-gray-50 border border-gray-200 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:outline-none focus:border-blue-500 block w-full p-2.5 "
-                placeholder="Serial # To"
+                placeholder="Serial # End"
                 defaultValue={20}
                 min={"0"}
                 required
@@ -155,7 +165,7 @@ export default function page() {
 
           <button
             className="h-[40px] bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
-            onClick={() => previewQRCard()}
+            // onClick={() => previewQRCard()}
           >
             Initialize!
           </button>
@@ -166,7 +176,7 @@ export default function page() {
           >
             convert pdf
           </button>
-          <QRCodeGenerator />
+          {/* <QRCodeGenerator /> */}
 
           <div>
             <br />
@@ -179,8 +189,9 @@ export default function page() {
           </div>
         </div>
 
-        <div className="w-full  border-0 border-white grid grid-cols-4 gap-4 ">
-          <QRCodeCardList />
+        <div className="w-full">
+          {/* <QRCodeCardList /> */}
+          {dynComp}
         </div>
 
         <Script
@@ -199,13 +210,16 @@ export default function page() {
   );
 }
 
-const QRCodeCardList = () => {
-  const serialNoFrom = 1;
-  const serialNoEnd = 20;
+//==========================================================
+
+const QRCodeCardList = ({ qrInfo }: any) => {
+  const serialNoFrom = parseInt(qrInfo.serialNoFrom);
+  const serialNoEnd = parseInt(qrInfo.serialNoEnd) + 1;
+
   const data_QRCodeInfo = _.range(serialNoFrom, serialNoEnd);
 
   return (
-    <>
+    <div className="w-full  border-0 border-white grid grid-cols-4 gap-4 ">
       {data_QRCodeInfo &&
         data_QRCodeInfo.map((e, key) => {
           return (
@@ -249,7 +263,7 @@ const QRCodeCardList = () => {
             </div>
           );
         })}
-    </>
+    </div>
   );
 };
 
