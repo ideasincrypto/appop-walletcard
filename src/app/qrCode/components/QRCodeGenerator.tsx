@@ -1,47 +1,29 @@
+"use client";
 import React from "react";
 import { useQRCode } from "next-qrcode";
 
-function App() {
+export default function QRCodeGenerator({ text }: any) {
   const { Image } = useQRCode();
 
-  const lib_Image = Image({
-    text: "https://github.com/bunlong/next-qrcode",
-    options: {
-      type: "image/jpeg",
-      quality: 0.3,
-      errorCorrectionLevel: "M",
-      margin: 3,
-      scale: 4,
-      width: 200,
-      color: {
-        dark: "#010599FF",
-        light: "#FFBF60FF",
-      },
-    },
-  });
-
-  console.log("Image==", lib_Image);
+  const qrText = text ? text.toString() : "text";
 
   return (
     <div className="qrImage">
       <Image
-        text={"https://github.com/bunlong/next-qrcode"}
+        text={qrText}
         options={{
           type: "image/jpeg",
-          quality: 0.3,
+          quality: 0.5,
           errorCorrectionLevel: "M",
-          margin: 3,
+          margin: 0,
           scale: 4,
-          width: 200,
+          width: 110,
           color: {
-            dark: "#010599FF",
-            light: "#FFBF60FF",
+            dark: "#17B169",
+            light: "#fff",
           },
         }}
       />
-      <div>---###-{JSON.stringify(Image)}</div>
     </div>
   );
 }
-
-export default App;
