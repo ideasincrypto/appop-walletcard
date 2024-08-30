@@ -35,7 +35,7 @@ const loadDynamicComponent = (qrInfo: any) => {
   );
 };
 
-async function fillForm() {
+async function fillForm(formSubmitInfo:any) {
   const elements: any = document.getElementsByTagName("img");
 
   alert(elements.length);
@@ -89,12 +89,14 @@ export default function page() {
   const [formSubmitInfo, setFormSubmitInfo] = React.useState<any>(null);
 
   async function GeneratePDF(user: any) {
+    formSubmitInfo;
+
     async function downloadPDF() {
       //   return pdfBytes;
       // }
       //setData(await fillForm());
       // async function saveByteArray(reportName: any, pdfBytes: any) {
-      var blob = await new Blob([await fillForm()], {
+      var blob = await new Blob([await fillForm(formSubmitInfo)], {
         type: "application/pdf",
       });
 
@@ -104,7 +106,9 @@ export default function page() {
       link.download = await fileName;
       await link.click();
     }
-    downloadPDF();
+
+    console.log(formSubmitInfo);
+    downloadPDF(downloadPDF);
   }
 
   async function previewQRCard(data: FormData) {
