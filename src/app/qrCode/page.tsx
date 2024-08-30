@@ -35,21 +35,9 @@ const loadDynamicComponent = (qrInfo: any) => {
   );
 };
 
-async function fillForm(formSubmitInfo:any) {
-  const elements: any = document.getElementsByTagName("img");
-
-  alert(elements.length);
-
-  const qrList = {};
-
-  for (let key of elements) {
-    const imgSRC = key.src;
-    if (imgSRC.includes("data:image/jpeg;base64")) {
-      console.log(imgSRC);
-    }
-  }
-
+async function fillForm() {
   const formUrl = "/QR_Template_ParkingPermit.pdf";
+  //const formUrl = "/QR_Template_ParkingPermit.pdf";
   const formPdfBytes = await fetch(formUrl).then((res) => res.arrayBuffer());
 
   const marioUrl = "https://pdf-lib.js.org/assets/small_mario.png";
@@ -86,29 +74,30 @@ async function fillForm(formSubmitInfo:any) {
 
 export default function page() {
   const [dynComp, setDynComp] = useState<any>(null);
-  const [formSubmitInfo, setFormSubmitInfo] = React.useState<any>(null);
+  // const [formSubmitInfo, setFormSubmitInfo] = React.useState<any>(null);
 
-  async function GeneratePDF(user: any) {
-    formSubmitInfo;
+  async function GeneratePDF() {
+    const elements: any = document.getElementsByTagName("img");
+    alert(elements.length);
 
-    async function downloadPDF() {
-      //   return pdfBytes;
-      // }
-      //setData(await fillForm());
-      // async function saveByteArray(reportName: any, pdfBytes: any) {
-      var blob = await new Blob([await fillForm(formSubmitInfo)], {
-        type: "application/pdf",
-      });
+    const qrList = {};
 
-      var link = await document.createElement("a");
-      link.href = await window.URL.createObjectURL(await blob);
-      var fileName = await "reportName.pdf";
-      link.download = await fileName;
-      await link.click();
+    for (let key of elements) {
+      const imgSRC = key.src;
+      if (imgSRC.includes("data:image/jpeg;base64")) {
+        console.log(imgSRC);
+      }
     }
 
-    console.log(formSubmitInfo);
-    downloadPDF(downloadPDF);
+    var blob = await new Blob([await fillForm()], {
+      type: "application/pdf",
+    });
+
+    var link = await document.createElement("a");
+    link.href = await window.URL.createObjectURL(await blob);
+    var outputFileName = await "reportName.pdf";
+    link.download = await outputFileName;
+    await link.click();
   }
 
   async function previewQRCard(data: FormData) {
@@ -116,11 +105,11 @@ export default function page() {
     const serialNoFrom = data.get("serialNoFrom");
     const serialNoEnd = data.get("serialNoEnd");
 
-    setFormSubmitInfo({
-      qrCardTitle: qrCardTitle,
-      serialNoFrom: serialNoFrom,
-      serialNoEnd: serialNoEnd,
-    });
+    // setFormSubmitInfo({
+    //   qrCardTitle: qrCardTitle,
+    //   serialNoFrom: serialNoFrom,
+    //   serialNoEnd: serialNoEnd,
+    // });
 
     const qrInfo = {
       qrCardTitle: qrCardTitle,
@@ -139,10 +128,12 @@ export default function page() {
 
     alert(elements.length);
 
-    for (let key of elements) {
-      const imgSRC = key.children;
+    for (let qrDiv of elements) {
+      const qrImgge = qrDiv.children[0];
+
       //if (imgSRC.src.includes("data:image/jpeg;base64")) {
-      console.log(imgSRC[0].currentSrc);
+      console.log(qrDiv.defaultValue);
+      console.log(qrImgge.currentSrc);
       //}
     }
 
@@ -283,12 +274,16 @@ const QRCodeCardList = ({ qrInfo }: any) => {
     <div className="w-full  border-0 border-white grid grid-cols-4 gap-4 ">
       {data_QRCodeInfo &&
         data_QRCodeInfo.map((e, key) => {
-          const qrCodeText =
-            "RCD_" +
-            (10000 + e).toString() +
-            "_RCD_Visitor" +
-            e.toString() +
-            "_Visitor";
+          const qrInfo = {
+            qrCodeText:
+              "RCD_" +
+              (10000 + e).toString() +
+              "_RCD_Visitor" +
+              e.toString() +
+              "_Visitor",
+            serialNo: e,
+          };
+
           return (
             <div
               key={key}
@@ -317,7 +312,7 @@ const QRCodeCardList = ({ qrInfo }: any) => {
                   </span>
                 </div>
 
-                <QRCodeGenerator qrCodeText={qrCodeText} />
+                <QRCodeGenerator qrInfo={qrInfo} />
               </div>
             </div>
           );

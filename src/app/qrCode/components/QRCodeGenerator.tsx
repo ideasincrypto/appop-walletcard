@@ -2,13 +2,15 @@
 import React from "react";
 import { useQRCode } from "next-qrcode";
 
-export default function QRCodeGenerator({ qrCodeText }: any) {
+export default function QRCodeGenerator({ qrInfo }: any) {
   const { Image } = useQRCode();
 
-  const text = qrCodeText ? qrCodeText.toString() : "text";
+  
+  const text = qrInfo.qrCodeText ? qrInfo.qrCodeText : "text";
+  const serialNo = qrInfo.serialNo;
 
   return (
-    <div className="qrImage" >
+    <div className="qrImage" defaultValue={serialNo.toString()}>
       <Image
         text={text}
         options={{
