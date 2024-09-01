@@ -17,6 +17,10 @@ const megaData = [
     link: "qrCode/",
     title: "QR Code",
   },
+  {
+    link: "acm2024/",
+    title: "ACM 2024",
+  },
 ];
 export default async function Home() {
   //const data = await prisma.copy_of_wallet_card_20240815.findMany();

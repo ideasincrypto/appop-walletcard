@@ -1,6 +1,25 @@
 import Link from "next/link";
 import React from "react";
 
+const megaData = [
+  {
+    link: "listPPUser/",
+    title: "Wallet Card",
+  },
+  {
+    link: "editPPUser/",
+    title: "Edit PP User",
+  },
+  {
+    link: "qrCode/",
+    title: "QR Code",
+  },
+  {
+    link: "acm2024/",
+    title: "ACM 2024",
+  },
+];
+
 export default function SideNavbar() {
   return (
     <nav className="w-full mx-auto px-6 py-3 bg-green-800">
@@ -12,27 +31,18 @@ export default function SideNavbar() {
         </div>
         <div className="hidden md:block">
           <ul className="flex items-center space-x-8">
-            <li>
-              <Link
-                href="listPPUser/"
-                className="text-white hover:text-yellow-300"
-              >
-                Completed PP Wallet Card
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="editPPUser/"
-                className="text-white hover:text-yellow-300"
-              >
-                Edit PP User
-              </Link>
-            </li>
-            <li>
-              <Link href="qrCode/" className="text-white hover:text-yellow-300">
-                QR Code
-              </Link>
-            </li>
+            {megaData.map((menu: any, key: number) => {
+              return (
+                <li key={key}>
+                  <Link
+                    href={menu.link}
+                    className="text-white hover:text-yellow-300"
+                  >
+                    {menu.title}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="md:hidden">

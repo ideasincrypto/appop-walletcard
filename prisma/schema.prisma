@@ -281,7 +281,7 @@ model categoryList {
 model copy_of_wallet_card_20240815 {
   ID            Int     @id @default(autoincrement())
   userID        Int?
-  applicantName String? @db.VarChar(24)
+  applicantName String? @db.VarChar(100)
   applicantDoB  String? @db.VarChar(10)
   appNumber     String? @db.VarChar(6)
   appExpiryDate String? @db.VarChar(10)
@@ -455,4 +455,18 @@ model users_users {
   id       BigInt @id @default(autoincrement())
   email    String @db.VarChar(30)
   password String @db.VarChar(50)
+}
+
+model tbl_ACM2024 {
+  ID           Int       @id @default(autoincrement())
+  EventTitle   String?   @db.VarChar(100)
+  RegName      String?   @db.VarChar(100)
+  RegEmail     String?   @db.VarChar(100)
+  RegTel       String?   @db.VarChar(100)
+  RegAddress   String?   @db.VarChar(200)
+  RegAffiliate String?   @db.VarChar(100)
+  RegPreamble  String    @db.LongText
+  RegQuestion  String    @db.LongText
+  RegDate      DateTime? @db.DateTime(0)
+  RegIP        String    @db.VarChar(20)
 }
