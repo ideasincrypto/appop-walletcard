@@ -177,13 +177,13 @@ export default function page() {
 
       <div className="w-full h-full flex flex-row bg-slate-100 p-4 space-x-14 border-8">
         <div className=" w-[400px] flex flex-col bg-white rounded-2xl p-8 gap-4 border-0">
-          {/* <Image 
+          <Image 
             src={"/coffee.png"}
             className="w-[400px] "
             width={400}
             height={400}
             alt={"tea"}
-          ></Image> */}
+          ></Image>
 
           <form action={previewQRCard}>
             <div className="flex flex-col space-y-8 border-0">
