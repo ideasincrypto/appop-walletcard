@@ -51,38 +51,38 @@ async function fillForm(array_qrInfoList: any) {
 
   // const txtTitleNo = await form.getTextField("txtTitleNo_0");
   // const txtMemberID = await form.getTextField("txtMemberID_0");
-  // const imgQRCode = await form.getButton("imgQRCode_0");
+  // // const imgQRCode = await form.getButton("imgQRCode_0");
 
-  // console.log(array_qrInfoList[0].qrImageData);
-  const qrImageData = array_qrInfoList[0].qrImageData.toString();
+  // // console.log(array_qrInfoList[0].qrImageData);
+  // const qrImageData = array_qrInfoList[0].qrImageData.toString();
 
-  await txtTitleNo.setText(array_qrInfoList[0].serialNo.toString());
-  await txtMemberID.setText(
-    (10000 + parseInt(array_qrInfoList[0].serialNo.toString())).toString()
-  );
+  // await txtTitleNo.setText(array_qrInfoList[0].serialNo.toString());
+  // await txtMemberID.setText(
+  //   (10000 + parseInt(array_qrInfoList[0].serialNo.toString())).toString()
+  // );
   //await imgQRCode.setImage(qrImageData);
 
-  (await form) &&
-    array_qrInfoList &&
-    array_qrInfoList.forEach(async (element: any, key: number) => {
-      console.log(element);
-  const serialNo = element.serialNo;
-  const MemberID = (10000 + parseInt(serialNo)).toString();
-  const marioImage = await pdfDoc.embedPng(marioImageBytes);
-  const qrImageData = await pdfDoc.embedJpg(element.qrImageData);
+  console.log("array_qrInfoList====", array_qrInfoList.length);
 
-  console.log("txtTitleNo_" + key.toString());
-  console.log("txtMemberID_" + key.toString());
-  console.log("imgQRCode_" + key.toString());
-  const txtTitle = form.getTextField("txtTitle_" + key.toString());
-  const txtTitleNo = form.getTextField("txtTitleNo_0");
-  const txtMemberID = form.getTextField("txtMemberID_0");
-  const imgQRCode = form.getButton("imgQRCode_0");
+  const array_qrInfoListLength = array_qrInfoList.length;
+  let txtfieldTitleNo = [array_qrInfoListLength];
+  let txtfieldMemberID = [array_qrInfoListLength];
+  let imgButtonQRCode = [array_qrInfoListLength];
+  let qrImageData = [array_qrInfoListLength];
 
-  txtTitleNo.setText("serialNo");
-  txtMemberID.setText("MemberID");
-  await imgQRCode.setImage(await qrImageData);
-  // });
+  for (let key = 0; key < array_qrInfoListLength; key++) {
+    //array_qrInfoList.forEach(async (element: any, key: number) => {
+    imgButtonQRCode[key] = form.getButton("imgQRCode_" + key);
+    txtfieldTitleNo[key] = form.getTextField("txtTitleNo_" + key.toString());
+    txtfieldMemberID[key] = form.getTextField("txtMemberID_" + key.toString());
+
+    qrImageData[key] = await pdfDoc.embedJpg(array_qrInfoList[key].qrImageData);
+    imgButtonQRCode[key].setImage(qrImageData[key]);
+    txtfieldTitleNo[key].setText(array_qrInfoList[key].serialNo);
+    txtfieldMemberID[key].setText(
+      (10000 + parseInt(array_qrInfoList[key].serialNo.toString())).toString()
+    );
+  }
 
   const pdfBytes = await pdfDoc.save();
   return pdfBytes;
@@ -93,7 +93,7 @@ export default function page() {
   // const [formSubmitInfo, setFormSubmitInfo] = React.useState<any>(null);
 
   async function GeneratePDF() {
-    const array_qrInfoList = [];
+    let array_qrInfoList = [];
     const qrDivs: any = document.getElementsByClassName("qrImage");
     //const elements: any = document.getElementsByTagName("img");
     //alert(qrDivs.length);
@@ -176,9 +176,6 @@ export default function page() {
       </div>
 
       <div className="w-full h-full flex flex-row bg-slate-100 p-4 space-x-14 border-8">
-        <div className="nav1" defaultValue="valueNav1">
-          nav1{elementContent}
-        </div>
         <div className=" w-[400px] flex flex-col bg-white rounded-2xl p-8 gap-4 border-0">
           {/* <Image 
             src={"/coffee.png"}
@@ -217,27 +214,29 @@ export default function page() {
                 name="serialNoEnd"
                 className="bg-gray-50 border border-gray-200 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:outline-none focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Serial # End"
-                defaultValue={20}
+                defaultValue={15}
                 min={"0"}
                 required
               />
 
               <button
+                id="previewParkingPermit"
                 type="submit"
                 className="bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
               >
-                Preview
+                Preview - Parking Permit
+              </button>
+
+              <button
+                id="previewVisitor"
+                type="submit"
+                className=" bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
+                //onClick={() => handle_click()}
+              >
+                preview - Visitor
               </button>
             </div>
           </form>
-
-          <button
-            id="clickID"
-            className=" bg-green-100 border border-green-300 text-green-600 hover:text-white hover:bg-green-700 focus:ring-4 text-lg focus:outline-none focus:ring-blue-100 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center "
-            onClick={() => handle_click()}
-          >
-            Test Preview
-          </button>
 
           <button
             disabled={!dynComp}
@@ -321,11 +320,11 @@ const QRCodeCardList = ({ qrInfo }: any) => {
 
               <div className="flex flex-row w-full border-0">
                 <div className="flex flex-col w-[250px] ">
-                  <span className="grid w-full h-[40px] border-0 place-items-center font-sans font-bold text-3xl ">
-                    RCD
+                  <span className="grid w-full h-[40px] border-0 place-items-center font-sans font-bold text-3xl text-red-600 ">
+                    Parking Permit
                   </span>
-                  <span className="grid w-full h-[40px] border-0 place-items-center font-sans font-bold text-3xl ">
-                    Visitor {e}
+                  <span className="grid w-full h-[40px] border-0 place-items-center font-sans font-bold text-3xl  text-red-600">
+                    {e}
                   </span>
                   <span className="grid w-full  h-[40px] place-items-center text-xl text-slate-400 font-light ">
                     {" "}

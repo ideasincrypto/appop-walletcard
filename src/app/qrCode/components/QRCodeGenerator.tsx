@@ -18,9 +18,9 @@ export default function QRCodeGenerator({ qrInfo }: any) {
           errorCorrectionLevel: "M",
           margin: 0,
           scale: 4,
-          width: 110,
+          width: 100,
           color: {
-            dark: "#17B169",
+            dark: "#00308F",
             light: "#fff",
           },
         }}
