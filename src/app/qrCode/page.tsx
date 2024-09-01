@@ -122,9 +122,21 @@ export default function page() {
   }
 
   async function previewQRCard(data: FormData) {
-    const qrCardTitle = data.get("qrCardTitle");
     const serialNoFrom = data.get("serialNoFrom");
     const serialNoEnd = data.get("serialNoEnd");
+
+    if (serialNoFrom && serialNoEnd) {
+      if (
+        Math.abs(
+          parseInt(serialNoFrom.toString()) - parseInt(serialNoEnd.toString())
+        ) > 10
+      ) {
+        alert(
+          "The difference between 'Serial # From' and 'Serial # End' cannot be greater than 10"
+        );
+        return false;
+      }
+    }
 
     // setFormSubmitInfo({
     //   qrCardTitle: qrCardTitle,
@@ -133,7 +145,6 @@ export default function page() {
     // });
 
     const qrInfo = {
-      qrCardTitle: qrCardTitle,
       serialNoFrom: serialNoFrom,
       serialNoEnd: serialNoEnd,
     };
@@ -141,43 +152,15 @@ export default function page() {
     setDynComp(<div>{loadDynamicComponent(qrInfo)}</div>);
   }
 
-  const [elementContent, setElementContent] = useState<any>();
-
-  function handle_click() {
-    const elements: any = document.getElementsByClassName("qrImage");
-    //const elements: any = document.getElementsByTagName("img");
-
-    alert(elements.length);
-
-    for (let qrDiv of elements) {
-      const qrImgge = qrDiv.children[0];
-
-      //if (imgSRC.src.includes("data:image/jpeg;base64")) {
-      console.log(qrDiv.title);
-      console.log(qrImgge.currentSrc);
-      //}
-    }
-
-    // if (elements) {
-    //   //setElementContent(element.length);
-    //   elements.forEach((e:any) => {
-    //     console.log(e);
-    //   });
-    //   alert(elements.length);
-    // }
-  }
-
-  //  const elements = document.querySelectorAll("nav1");
-
   return (
     <div className="w-screen h-screen bg-green-50 flex flex-col items-center text-gray-600">
       <div className="w-full flex">
         <SideNavbar />
       </div>
 
-      <div className="w-full h-full flex flex-row bg-slate-100 p-4 space-x-14 border-8">
+      <div className="w-full h-full flex flex-row bg-slate-200 p-4 space-x-14 border-8">
         <div className=" w-[400px] flex flex-col bg-white rounded-2xl p-8 gap-4 border-0">
-          <Image 
+          <Image
             src={"/coffee.png"}
             className="w-[400px] "
             width={400}
@@ -188,23 +171,12 @@ export default function page() {
           <form action={previewQRCard}>
             <div className="flex flex-col space-y-8 border-0">
               <input
-                type="text"
-                id="qrCardTitle"
-                name="qrCardTitle"
-                className="bg-gray-50 border border-gray-200 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:outline-none focus:border-blue-500 block w-full p-2.5 "
-                placeholder="QR Card Title"
-                defaultValue={"Visitor"}
-                required
-              />
-
-              <input
                 type="number"
                 id="serialNoFrom"
                 name="serialNoFrom"
                 className="bg-gray-50 border border-gray-200 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:outline-none focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Serial # From"
-                defaultValue={11}
-                min={"0"}
+                min={"1"}
                 required
               />
 
@@ -214,8 +186,7 @@ export default function page() {
                 name="serialNoEnd"
                 className="bg-gray-50 border border-gray-200 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:outline-none focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Serial # End"
-                defaultValue={15}
-                min={"0"}
+                min={"1"}
                 required
               />
 
