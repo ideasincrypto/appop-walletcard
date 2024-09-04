@@ -8,11 +8,11 @@ export default function page() {
   revalidatePath("/acm2024");
 
   return (
-    <div className="w-screen h-screen bg-green-50 flex flex-col items-center text-gray-600">
-      <div className="w-full flex">
+    <div className="w-screen block flex-col h-screen bg-gray-100 items-center text-gray-600">
+      <div className="w-full block border-0">
         <SideNavbar />
       </div>
-      <div className="w-full">
+      <div className="w-full h-[1000px] flex flex-grow ">
         <Acm2024_Block />
       </div>
     </div>

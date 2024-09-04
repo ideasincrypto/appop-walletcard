@@ -22,7 +22,7 @@ const megaData = [
 
 export default function SideNavbar() {
   return (
-    <nav className="w-full mx-auto px-6 py-3 bg-green-800">
+    <nav className="w-full  mx-auto px-6 py-3 bg-green-800">
       <div className="flex items-center justify-between">
         <div className="text-white font-bold text-xl">
           <Link href="/" className="hover:text-blue-600">
