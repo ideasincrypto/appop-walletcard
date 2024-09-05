@@ -38,46 +38,49 @@ export default async function Acm2024_Block() {
                   <span className="text-green-400 inline-block w-[100px] font-semibold ">
                     Preamble:
                   </span>
-                  <div className="w-full">{item.RegPreamble}</div>
+                  <div className="w-full ">{item.RegPreamble}</div>
                 </div>
 
                 <div className="w-full  h-full border-0 flex flex-row ">
                   <span className="text-green-400  inline-block  w-[100px] font-semibold">
                     Question:
                   </span>
-                  <div className="w-full">{item.RegQuestion}</div>
+                  <div className="w-full ">{item.RegQuestion}</div>
                 </div>
 
                 <div className="w-full grid grid-cols-3 p-3 border-0 pl-[100px]">
-                  <div className="w-[300px] h-[40px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0 ">
                     <FaUser className="text-gray-200 text-2xl mr-4 " />
-                    {item.RegName}
+                    <span className="text-lime-500"> {item.RegName}</span>
                   </div>
-                  <div className="w-[300px] h-[40px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0 ">
                     <MdEmail className="text-gray-200 text-2xl mr-4" />
-                    {item.RegEmail}
+                    <span className="text-lime-500">{item.RegEmail}</span>
                   </div>
-                  <div className="w-[300px] h-[40px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0 ">
                     <MdEmail className="text-gray-200 text-2xl mr-4" />
-                    {item.RegTel}
+                    <span className="text-lime-500"> {item.RegTel}</span>
                   </div>
                   <div className="w-[900px] h-[40px] flex flex-row border-0">
                     <FaLocationDot className="text-gray-200 text-2xl mr-4" />
-                    {item.RegAddress}
+                    <span className="text-lime-500"> {item.RegAddress}</span>
                   </div>
-                  <div className="w-[300px] h-[40px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0 ">
                     <FaGripHorizontal className="text-gray-200 text-2xl mr-4" />
-                    {item.RegIP}
+                    <span className="text-lime-500"> {item.RegIP}</span>
                   </div>
-                  <div className="w-[300px] h-[40px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0 ">
                     <IoTimer className="text-gray-200 text-2xl mr-4" />
-                    {moment(item.RegDate).format("YYYY-MM-DD    HH:mm:ss")}
+                    <span className="text-lime-500">
+                      {" "}
+                      {moment(item.RegDate).format("YYYY-MM-DD    HH:mm:ss")}
+                    </span>
                   </div>
                 </div>
               </div>
 
               <div className="w-[200] flex flex-row  p-6 gap-5 ">
-                <Button_Save item={item} saveACM2024={saveACM2024}/>
+                <Button_Save item={item} saveACM2024={saveACM2024} />
 
                 <Button_Delete item={item} deleteACM2024={deleteACM2024} />
               </div>
