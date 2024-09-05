@@ -9,6 +9,11 @@ import moment from "moment-timezone";
 import { IoTimer } from "react-icons/io5";
 import { FaGripHorizontal } from "react-icons/fa";
 
+import Button_Delete from "./Button_Delete";
+import Button_Save from "./Button_Save";
+
+import { saveACM2024, deleteACM2024 } from "../lib/lib";
+
 const prisma = new PrismaClient();
 
 export default async function Acm2024_Block() {
@@ -35,6 +40,7 @@ export default async function Acm2024_Block() {
                   </span>
                   <div className="w-full">{item.RegPreamble}</div>
                 </div>
+
                 <div className="w-full  h-full border-0 flex flex-row ">
                   <span className="text-green-400  inline-block  w-[100px] font-semibold">
                     Question:
@@ -42,28 +48,28 @@ export default async function Acm2024_Block() {
                   <div className="w-full">{item.RegQuestion}</div>
                 </div>
 
-                <div className="w-full grid grid-cols-3 p-3 border-0">
-                  <div className="w-[300px] h-[50px] flex flex-row border-0">
+                <div className="w-full grid grid-cols-3 p-3 border-0 pl-[100px]">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0">
                     <FaUser className="text-gray-200 text-2xl mr-4 " />
                     {item.RegName}
                   </div>
-                  <div className="w-[300px] h-[50px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0">
                     <MdEmail className="text-gray-200 text-2xl mr-4" />
                     {item.RegEmail}
                   </div>
-                  <div className="w-[300px] h-[50px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0">
                     <MdEmail className="text-gray-200 text-2xl mr-4" />
                     {item.RegTel}
                   </div>
-                  <div className="w-[900px] h-[50px] flex flex-row border-0">
+                  <div className="w-[900px] h-[40px] flex flex-row border-0">
                     <FaLocationDot className="text-gray-200 text-2xl mr-4" />
                     {item.RegAddress}
                   </div>
-                  <div className="w-[300px] h-[50px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0">
                     <FaGripHorizontal className="text-gray-200 text-2xl mr-4" />
                     {item.RegIP}
                   </div>
-                  <div className="w-[300px] h-[50px] flex flex-row border-0">
+                  <div className="w-[300px] h-[40px] flex flex-row border-0">
                     <IoTimer className="text-gray-200 text-2xl mr-4" />
                     {moment(item.RegDate).format("YYYY-MM-DD    HH:mm:ss")}
                   </div>
@@ -71,8 +77,9 @@ export default async function Acm2024_Block() {
               </div>
 
               <div className="w-[200] flex flex-row  p-6 gap-5 ">
-                <FiEdit className="text-3xl text-gray-100 hover:cursor-pointer hover:text-red-500 " />
-                <RiDeleteBin7Line className="text-3xl text-gray-100 hover:cursor-pointer hover:text-red-500 " />
+                <Button_Save item={item} saveACM2024={saveACM2024}/>
+
+                <Button_Delete item={item} deleteACM2024={deleteACM2024} />
               </div>
             </div>
           );
