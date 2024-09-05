@@ -8,6 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import moment from "moment-timezone";
 import { IoTimer } from "react-icons/io5";
 import { FaGripHorizontal } from "react-icons/fa";
+import { FaPhoneVolume } from "react-icons/fa";
 
 import Button_Delete from "./Button_Delete";
 import Button_Save from "./Button_Save";
@@ -28,7 +29,7 @@ export default async function Acm2024_Block() {
           return (
             <div
               key={key}
-              className="w-[1400px] flex flex-row bg-white rounded-2xl p-3 mb-4 "
+              className="w-[1200px] flex flex-row bg-white rounded-2xl p-3 mb-4 "
             >
               <div className="w-[50px] text-gray-200 text-2xl border-r font-bold grid place-items-center">
                 {item.ID}
@@ -58,7 +59,7 @@ export default async function Acm2024_Block() {
                     <span className="text-lime-500">{item.RegEmail}</span>
                   </div>
                   <div className="w-[300px] h-[40px] flex flex-row border-0 ">
-                    <MdEmail className="text-gray-200 text-2xl mr-4" />
+                    <FaPhoneVolume className="text-gray-200 text-2xl mr-4" />
                     <span className="text-lime-500"> {item.RegTel}</span>
                   </div>
                   <div className="w-[900px] h-[40px] flex flex-row border-0">
@@ -79,7 +80,7 @@ export default async function Acm2024_Block() {
                 </div>
               </div>
 
-              <div className="w-[200] flex flex-row  p-6 gap-5 ">
+              <div className="w-[100] flex flex-row  p-6 gap-5 ">
                 <Button_Save item={item} saveACM2024={saveACM2024} />
 
                 <Button_Delete item={item} deleteACM2024={deleteACM2024} />

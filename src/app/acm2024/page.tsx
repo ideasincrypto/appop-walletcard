@@ -13,6 +13,7 @@ export default function page() {
         <SideNavbar />
       </div>
       <div className="w-full h-[1000px] flex flex-grow ">
+        <div className="w-[300px] h-[300px] border-2"></div>
         <Acm2024_Block />
       </div>
     </div>
