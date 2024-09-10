@@ -33,7 +33,7 @@ export default async function Home() {
             <>
               <Link
                 key={key}
-                className="h-[70px] w-full relative inline-flex items-center justify-center text-2xl font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:text-slate-300 hover:bg-slate-700"
+                className="h-[70px] w-full relative inline-flex items-center justify-center text-2xl font-bold text-white transition-all duration-200 bg-gray-800 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:text-slate-300 hover:bg-slate-700"
                 href={menu.link}
               >
                 {menu.title}
