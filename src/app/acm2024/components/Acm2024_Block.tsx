@@ -10,17 +10,17 @@ import { IoTimer } from "react-icons/io5";
 import { FaGripHorizontal } from "react-icons/fa";
 import { FaPhoneVolume } from "react-icons/fa";
 
+import { saveACM2024, deleteACM2024 } from "../lib/lib";
+
 import Button_Delete from "./Button_Delete";
 import Button_Save from "./Button_Save";
 
-import { saveACM2024, deleteACM2024 } from "../lib/lib";
+
 
 const prisma = new PrismaClient();
 
-export default async function Acm2024_Block() {
-  const data_ACM2024 = await prisma.tbl_ACM2024.findMany({
-    orderBy: { ID: "asc" },
-  });
+export default async function Acm2024_Block({data_ACM2024}:any) {
+
 
   return (
     <div className="w-full h-full flex flex-col place-items-center  overflow-y-auto border-0 p-4 ">
