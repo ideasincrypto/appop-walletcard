@@ -5,21 +5,21 @@ import Link from "next/link";
 const prisma = new PrismaClient();
 
 const megaData = [
-  {
-    link: "listPPUser/",
-    title: "Wallet Card",
-  },
-  {
-    link: "editPPUser/",
-    title: "Edit PP User",
-  },
-  {
-    link: "qrCode/",
-    title: "QR Code",
-  },
+  // {
+  //   link: "listPPUser/",
+  //   title: "Wallet Card",
+  // },
+  // {
+  //   link: "editPPUser/",
+  //   title: "Edit PP User",
+  // },
+  // {
+  //   link: "qrCode/",
+  //   title: "QR Code",
+  // },
   {
     link: "acm2024/",
-    title: "ACM 2024",
+    title: "All Candidates Meeting 2024",
   },
 ];
 export default async function Home() {
