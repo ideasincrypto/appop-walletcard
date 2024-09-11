@@ -18,9 +18,9 @@ export default function Button_Delete({ item, deleteACM2024 }: any) {
   }
 
   return (
-    <span className=" text-gray-500 border-0 w-[50px] h-[50px]  flex items-center space-x-4 ">
+    <span className=" text-gray-500 border-0 w-[40px] h-[40px]  flex items-center space-x-4 ">
       <CiTrash
-        className="h-[50px] w-[50px] text-gray-100 hover:text-green-400 hover:cursor-pointer"
+        className="h-[40px] w-[40px] text-gray-100 hover:text-green-400 hover:cursor-pointer group-hover:text-cyan-400"
         onClick={(e) => handel_Del(e)}
       ></CiTrash>
     </span>

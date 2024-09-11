@@ -29,7 +29,7 @@ export default async function Acm2024_Block({data_ACM2024}:any) {
           return (
             <div
               key={key}
-              className="w-[1200px] flex flex-row bg-white rounded-2xl p-3 mb-4 "
+              className="w-[1200px] flex flex-row bg-white rounded-2xl p-3 mb-4 group "
             >
               <div className="w-[50px] text-gray-200 text-2xl border-r font-bold grid place-items-center">
                 {item.ID}
