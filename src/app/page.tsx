@@ -49,8 +49,7 @@ import { redirect } from "next/navigation";
 
 export default function page() {
   async function submitLogin(formData: FormData) {
-    
-    "use server"
+    "use server";
     //alert("dfasdf")
     const passcode = formData.get("passcode")?.valueOf().toString();
     console.log(await process.env.PASSCODE);
@@ -59,7 +58,7 @@ export default function page() {
       console.log("yes");
       redirect("/acm2024");
     } else {
-      console.log("no");
+      // alert("cannot go");
     }
   }
   return (
