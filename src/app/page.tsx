@@ -44,12 +44,23 @@
 //   );
 // }
 
-"use client";
 import React from "react";
+import { redirect } from "next/navigation";
 
 export default function page() {
   async function submitLogin(formData: FormData) {
-    console.log(formData);
+    
+    "use server"
+    //alert("dfasdf")
+    const passcode = formData.get("passcode")?.valueOf().toString();
+    console.log(await process.env.PASSCODE);
+
+    if (process.env.PASSCODE === passcode) {
+      console.log("yes");
+      redirect("/acm2024");
+    } else {
+      console.log("no");
+    }
   }
   return (
     <div className="w-screen h-screen">
