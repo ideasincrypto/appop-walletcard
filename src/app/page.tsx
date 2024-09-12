@@ -92,7 +92,7 @@ export default function page() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+                      className="block mb-2  text-gray-500 dark:text-gray-400"
                     >
                       Enter the Passcode
                     </label>
@@ -101,14 +101,14 @@ export default function page() {
                       name="passcode"
                       id="passcode"
                       placeholder="pass code"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full h-14 px-4 py-2 mt-2 font-light text-2xl text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
 
                   <div className="mt-6">
                     <button
                       type="submit"
-                      className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                      className="w-full  h-14  px-4 py-2 tracking-wide  font-light text-2xl text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                     >
                       Sign in
                     </button>

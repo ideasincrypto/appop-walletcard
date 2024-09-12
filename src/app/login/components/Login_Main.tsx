@@ -1,20 +1,7 @@
+"use client";
 import React from "react";
-import { redirect } from "next/navigation";
 
-const PASSCODE = process.env.PASSCODE;
-
-export  default  function page() {
-  async function submitLogin(formData: FormData) {
-    "use server"
-    const passcode = formData.get("passcode")?.valueOf().toString();
-    if (PASSCODE === passcode) {
-      console.log("yes");
-      redirect("/acm2024");
-    } else {
-      alert("cannot go");
-    }
-  }
-
+export default function Login_Main({ submitLogin }: any) {
   return (
     <div className="w-screen h-screen">
       <div className="bg-white dark:bg-gray-900">
