@@ -12,7 +12,7 @@ export default async function page() {
     PASSCODE ? PASSCODE.toString() : ""
   );
 
-  const decrypted = await crypto.decrypt(encrypted_PASSCODE);
+  //const decrypted = await crypto.decrypt(encrypted_PASSCODE);
 
   return (
     <div>
