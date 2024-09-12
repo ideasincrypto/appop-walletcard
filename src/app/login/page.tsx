@@ -9,10 +9,16 @@ export default async function Page() {
         action={async (formData) => {
           "use server";
           await login(formData);
-          redirect("/");
+          redirect("/acm2024");
         }}
       >
-        <input type="email" placeholder="Email" className="text-slate-500" />
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email"
+          className="text-slate-500"
+        />
         <br />
         <button type="submit">Login</button>
       </form>
@@ -20,7 +26,7 @@ export default async function Page() {
         action={async () => {
           "use server";
           await logout();
-          redirect("/");
+          redirect("/login");
         }}
       >
         <button type="submit">Logout</button>
