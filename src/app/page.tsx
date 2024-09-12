@@ -81,7 +81,7 @@ export default function page() {
             <div className="flex-1">
               <div className="text-center">
                 <h2 className="text-2xl font-bold text-center text-gray-700 dark:text-white">
-                  Richmond Centre for Disability
+                  Richmond Center for Disability
                 </h2>
 
                 <p className="mt-3 text-gray-500 dark:text-gray-300"></p>
