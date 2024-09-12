@@ -1,7 +1,31 @@
 "use client";
 import React from "react";
+import { redirect } from "next/navigation";
+import NextCrypto from "next-crypto";
 
-export default function Login_Main({ submitLogin }: any) {
+export default function Login_Main({ encrypted_PASSCODE }: any) {
+  async function submitLogin(formData: FormData) {
+    const passcode = formData.get("passcode")?.valueOf().toString();
+
+    if (!passcode) {
+      alert("Please enter the Passcode !!!");
+      return false;
+    }
+
+    const crypto = new NextCrypto("THISISASECRET");
+
+    //const decrypted_PASSCODE = crypto.decrypt(encrypted_PASSCODE).toString();
+    const decrypted = await crypto.decrypt(encrypted_PASSCODE);
+
+    if (decrypted === passcode) {
+      //console.log("yes");
+      redirect("/acm2024");
+    } else {
+      //setData("not matching");
+      alert("Wrong Passcode !!!");
+    }
+  }
+
   return (
     <div className="w-screen h-screen">
       <div className="bg-white dark:bg-gray-900">
@@ -31,17 +55,11 @@ export default function Login_Main({ submitLogin }: any) {
               <div className="mt-8">
                 <form action={submitLogin}>
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block mb-2  text-gray-500 dark:text-gray-400"
-                    >
-                      Enter the Passcode
-                    </label>
                     <input
-                      type="text"
+                      type="password"
                       name="passcode"
                       id="passcode"
-                      placeholder="pass code"
+                      placeholder="Please enter the Passcode"
                       className="block w-full h-14 px-4 py-2 mt-2 font-light text-2xl text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
