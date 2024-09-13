@@ -2,13 +2,41 @@
 import React from "react";
 import { redirect } from "next/navigation";
 import NextCrypto from "next-crypto";
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = (msg: string) =>
+  toast(msg, {
+    duration: 4000,
+    position: "top-center",
+
+    // Styling
+    style: { width: 500, height: 100 },
+    className: "",
+
+    // Custom Icon
+    icon: "⭐",
+
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: "#000",
+      secondary: "#fff",
+    },
+
+    // Aria
+    ariaProps: {
+      role: "status",
+      "aria-live": "polite",
+    },
+  });
 
 export default function Login_Main({ encrypted_PASSCODE }: any) {
   async function submitLogin(formData: FormData) {
     const passcode = formData.get("passcode")?.valueOf().toString();
 
     if (!passcode) {
-      alert("Please enter the Passcode !!!");
+      //alert("Please enter the Passcode !!!");
+      notify("Please enter the Passcode !!!");
+
       return false;
     }
 
@@ -22,7 +50,7 @@ export default function Login_Main({ encrypted_PASSCODE }: any) {
       redirect("/acm2024");
     } else {
       //setData("not matching");
-      alert("Wrong Passcode !!!");
+      notify("Wrong Passcode !!!");
     }
   }
 
@@ -80,6 +108,7 @@ export default function Login_Main({ encrypted_PASSCODE }: any) {
           </div>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }
